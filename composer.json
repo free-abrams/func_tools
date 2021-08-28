@@ -2,6 +2,7 @@
     "name": "free-abrams/func_tools",
     "description": "php tools",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "FreeAbrams\\FuncTools\\": "src/"
