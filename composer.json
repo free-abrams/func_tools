@@ -1,0 +1,17 @@
+{
+    "name": "free-abrams/func_tools",
+    "description": "php tools",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "FreeAbrams\\FuncTools\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/support": "^8.55",
+        "symfony/var-dumper": "^5.3"
+    },
+    "files" : [
+        "src/Function/function.php"
+    ]
+}
