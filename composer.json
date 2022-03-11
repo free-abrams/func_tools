@@ -5,15 +5,21 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "FreeAbrams\\FuncTools\\": "src/"
+            "FreeAbrams\\FuncTools\\": "src/",
+            "FreeAbrams\\Test\\": "test"
         },
         "files" : [
             "src/Function/function.php"
         ]
     },
     "require": {
-        "illuminate/support": "^8.55",
-        "symfony/var-dumper": "^5.3"
+      "illuminate/support": "^8.55",
+      "symfony/var-dumper": "^5.3",
+      "ext-openssl": "*",
+      "ext-json": "*",
+        "monolog/monolog": "^2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
-
 }

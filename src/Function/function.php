@@ -802,3 +802,65 @@ if (!function_exists('d')) {
         exit(1);
     }
 }
+
+/**
+ * 冒泡排序
+ */
+if (!function_exists('pop_sort')) {
+	function pop_sort($arr = [], $sort = 'desc')
+	{
+		for ($i = 0; $i < count($arr); $i++) {
+			for ($j = 0; $j < count($arr); $j++) {
+				if ($arr[$j] < $arr[$j + 1] && $sort == 'desc') {
+					$temp = $arr[$j + 1];
+					$arr[$j] = $arr[$j + 1];
+					$arr[$j + 1] = $temp;
+				} else {
+					$temp = $arr[$j + 1];
+					$arr[$j + 1] = $arr[$j];
+					$arr[$j] = $temp;
+				}
+			}
+		}
+	}
+}
+
+if (!function_exists('fast_sort')) {
+	function fast_sort($arr)
+	{
+		inner_fast_sort($arr, 0, count($arr) -1);
+		return $arr;
+	}
+}
+
+
+if (!function_exists('inner_fast_sort')) {
+	function inner_fast_sort(&$arr, $start, $end)
+	{
+		if ($start >= $end) {
+			return $arr;
+		} else {
+			$partition = partition($arr, $start, $end);
+			echo $partition.PHP_EOL;
+			inner_fast_sort($arr, 0, $partition - 1);
+			inner_fast_sort($arr, $partition + 1, $end);
+		}
+	}
+}
+
+if (!function_exists('partition')) {
+	function partition(&$arr, $start, $end)
+	{
+		$pivot = $arr[$start];
+		$i = $start; $j = $end;
+		while ($i < $j) {
+			while ($i < $j && $arr[$j] >= $pivot )$j--;
+			$arr[$i] = $arr[$j];
+			while ($i < $j && $arr[$i] <= $pivot )$i++;
+			$arr[$j] = $arr[$i];
+		}
+		
+		$arr[$i] = $pivot;
+		return $i;
+	}
+}
