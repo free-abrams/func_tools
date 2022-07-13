@@ -1,0 +1,50 @@
+<?php
+namespace FreeAbrams\FuncTools\Tree;
+
+//二叉树
+class BitTree 
+{
+	public $root = null;
+
+	public BitTree $leftChild;
+
+	public BitTree $rightChild;
+
+	private $order;
+
+	//先序遍历
+	public function preOrder(BitTree $tree, &$arr = [])
+	{
+		if (!$tree->root) {
+			return null;
+		} else {
+			$tree->root;
+			preOrder($tree->leftChild);
+			preOrder($tree->rightChild);
+		}
+	}
+
+	//中序遍历
+	public function inOrder(BitTree $tree, &$arr = [])
+	{
+		if (!$tree->root) {
+			return null;
+		} else {
+			inOrder($tree->leftChild);
+			$tree->root;
+			inOrder($tree->rightChild);
+		}
+	}
+
+	//后序遍历
+	public function sufOrder(BitTree $tree, &$arr = [])
+	{
+		if (!$tree->root) {
+			return null;
+		} else {
+			sufOrder($tree->leftChild);
+			sufOrder($tree->rightChild);
+			$tree->root;
+		}
+	}
+}
