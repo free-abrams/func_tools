@@ -13,13 +13,4 @@ class BaseFile
     {
 
     }
-
-    __tostring()
-    {
-        $arr = [];
-        foreach($this as $k => $v){
-            $arr[$k] = $v;
-        }
-        return $arr;
-    }
 }
