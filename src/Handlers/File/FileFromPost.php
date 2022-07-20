@@ -71,13 +71,8 @@ class FileFromPost extends BaseFile
 	private function getFile($path = '', $name = '')
 	{
 		// 检查路径
-		if (!is_dir($path)) {
-            if (false === @mkdir($path, 0777, true) && !is_dir($path)) {
-                throw new FileUploadError(sprintf('Unable to create the "%s" directory.', $path));
-            }
-		}  elseif (!is_writable($path)) {
-            throw new FileUploadError(sprintf('Unable to write in the "%s" directory.', $path));
-        }
+		$path = rtrim($path, '\//');
+		self::checkDir($path);
 				// 检查是否能够上传
 		if (!$this->canSave()) {
 			return false;
@@ -89,7 +84,7 @@ class FileFromPost extends BaseFile
 			$exstension.= '.'.$this->getClientExtension();
 		}
 		
-		return rtrim($path, '\//').'/'.$name.$exstension;
+		return $path.'/'.$name.$exstension;
 	}
 	
 	private function guessFileExtension()

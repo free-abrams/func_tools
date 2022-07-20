@@ -27,6 +27,8 @@ class FileFromBitString extends BaseFile
 	 */
 	public function saveAs(string $path = '', string $name = '')
 	{
+		$path = rtrim($path, '\//');
+		self::checkDir($path);
 		$head = substr($this->stream, 0, 2);
 		$res = unpack('H4', $head);
 		$ext = self::gaussByteExstension(array_pop($res));
@@ -38,7 +40,7 @@ class FileFromBitString extends BaseFile
 		} else {
 			$name.= '.'.$ext;
 		}
-		return file_put_contents($path.$name, $this->stream);
+		return file_put_contents($path.'/'.$name, $this->stream);
 	}
 	
 	/**

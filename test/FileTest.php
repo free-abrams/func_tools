@@ -12,14 +12,12 @@ use PHPUnit\Framework\TestCase;
  */
 class FileTest extends TestCase
 {
-	public function testSaveAs()
+	public function testCreateFromStreamData()
 	{
-		$__file = $_FILES;
-		$file = new File($__file);
-		$path = '/upload/'.
-			date('Y', time()).'/'.
-			date('m', time()).'/'.
-			date('d', time()).'/'.md5(time());
-		$file->saveAs($path);
+		$res = dirname(dirname(__FILE__)).'/uploads/';
+		$stream = file_get_contents('https://wx2.sinaimg.cn/bmiddle/005YCRu1gy1h4c5082r93j30k00k07cg.jpg');
+		$handle = new File();
+		$handle->createFromStreamData($stream);
+		return $handle->saveAs($res, '北安普顿');
 	}
 }
